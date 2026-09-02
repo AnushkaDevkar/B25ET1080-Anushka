@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+class Test
+{
+public:
+
+    void swap(int a, int b)
+    {
+        int temp;
+        temp = a;
+        a = b;
+        b = temp;
+
+        cout << "Integer after swapping: " << a << " " << b << endl;
+    }
+
+    void swap(float a, float b)
+    {
+        float temp;
+        temp = a;
+        a = b;
+        b = temp;
+
+        cout << "Float after swapping: " << a << " " << b << endl;
+    }
+};
+
+int main()
+{
+    Test s;
+
+    s.swap(10, 20);
+    s.swap(10.5f, 20.5f);
+
+    return 0;
+}
+
