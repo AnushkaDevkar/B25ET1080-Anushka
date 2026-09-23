@@ -1,0 +1,74 @@
+#include <iostream>          // Header file for input/output
+using namespace std;
+
+// Class for complex numbers
+class complex
+{
+    int real, imag;           // Data members: real and imaginary parts
+
+public:
+
+    // Constructor
+    // Default values are 0 for real and imaginary parts
+    complex(int r = 0, int i = 0)
+    {
+        real = r;
+        imag = i;
+    }
+
+    // Function to display a complex number
+    void display();
+
+    // Operator overloading for multiplication (*)
+    complex operator*(complex);
+};
+
+// Definition of display() function
+void complex::display()
+{
+    // If imaginary part is positive or zero
+    if (imag >= 0)
+        cout << real << "+i" << imag << endl;
+
+    // If imaginary part is negative
+    else
+        cout << real << "-i" << -imag << endl;
+}
+
+// Definition of overloaded multiplication operator
+complex complex::operator*(complex c1)
+{
+    complex mul;              // Create an object to store the result
+
+    // Formula for real part:
+    // (a + bi)(c + di) = (ac - bd) + i(ad + bc)
+    mul.real = (real * c1.real) - (imag * c1.imag);
+
+    // Formula for imaginary part
+    mul.imag = (real * c1.imag) + (imag * c1.real);
+
+    // Return the multiplication result
+    return mul;
+}
+
+// Main function
+int main()
+{
+    // Create two complex number objects
+    complex c1(7, 4);
+    complex c2(6, 8);
+
+    // Create an object to store the result
+    complex c3;
+
+    // Multiply c1 and c2 using overloaded * operator
+    c3 = c1 * c2;
+
+    // Display the result
+    cout << "Multiplication is: ";
+    c3.display();
+
+    return 0;                 // End of program
+}
+
+
