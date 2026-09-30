@@ -1,0 +1,47 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class String {
+private:
+    char* str;
+
+public:
+    // Parameterized constructor
+    String(const char* s) {
+        str = new char[strlen(s) + 1];
+        strcpy(str, s);
+    }
+
+    // Copy constructor
+    String(const String& obj) {
+        str = new char[strlen(obj.str) + 1];
+        strcpy(str, obj.str);
+    }
+
+    // Display function
+    void display() {
+        cout << str << endl;
+    }
+
+    // Destructor
+    ~String() {
+        delete[] str;
+    }
+};
+
+int main() {
+    // Create the first string object
+    String s1("Hello, World!");
+
+    // Copy s1 into s2 using the copy constructor
+    String s2(s1);
+
+    cout << "Original string: ";
+    s1.display();
+
+    cout << "Copied string: ";
+    s2.display();
+
+    return 0;
+}
