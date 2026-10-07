@@ -1,0 +1,97 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base class 1: Stores basic employee information
+class Employee
+{
+protected:
+    int empId;
+    string empName;
+
+public:
+    // Function to get employee details
+    void getEmployeeDetails()
+    {
+        cout << "Enter Employee ID: ";
+        cin >> empId;
+
+        cin.ignore(); // Clear input buffer
+
+        cout << "Enter Employee Name: ";
+        getline(cin, empName);
+    }
+
+    // Function to display employee details
+    void displayEmployeeDetails()
+    {
+        cout << "\nEmployee ID   : " << empId << endl;
+        cout << "Employee Name : " << empName << endl;
+    }
+};
+
+// Base class 2: Stores leave information
+class Leave
+{
+protected:
+    int totalLeave;
+    int usedLeave;
+
+public:
+    // Function to get leave details
+    void getLeaveDetails()
+    {
+        cout << "Enter Total Leave Allowed: ";
+        cin >> totalLeave;
+
+        cout << "Enter Leave Used: ";
+        cin >> usedLeave;
+    }
+
+    // Function to calculate remaining leave
+    int calculateRemainingLeave()
+    {
+        return totalLeave - usedLeave;
+    }
+
+    // Function to display leave details
+    void displayLeaveDetails()
+    {
+        cout << "Total Leave   : " << totalLeave << endl;
+        cout << "Used Leave    : " << usedLeave << endl;
+        cout << "Remaining Leave: " << calculateRemainingLeave() << endl;
+    }
+};
+
+// Derived class: Multiple inheritance
+// EmployeeLeave inherits from both Employee and Leave
+class EmployeeLeave : public Employee, public Leave
+{
+public:
+    // Function to display complete information
+    void displayDetails()
+    {
+        displayEmployeeDetails();
+        displayLeaveDetails();
+    }
+};
+
+int main()
+{
+    // Create an object of the derived class
+    EmployeeLeave emp;
+
+    cout << "===== Employee Information =====" << endl;
+
+    // Get employee basic information
+    emp.getEmployeeDetails();
+
+    // Get leave information
+    emp.getLeaveDetails();
+
+    // Display all information and remaining leave
+    cout << "\n===== Employee Leave Details =====" << endl;
+    emp.displayDetails();
+
+    return 0;
+}
