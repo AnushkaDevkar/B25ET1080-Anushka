@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double salary;
+
+    // Ask the user to enter the employee's salary
+    cout << "Enter employee salary: ";
+    cin >> salary;
+
+    try {
+        // Check if the salary is negative
+        if (salary < 0) {
+            // Throw an exception if salary is negative
+            throw "Error: Salary cannot be negative!";
+        }
+
+        // Display the salary if it is valid
+        cout << "Employee salary is: " << salary << endl;
+    }
+    catch (const char* message) {
+        // Catch and display the exception message
+        cout << message << endl;
+    }
+
+    return 0;
+}
