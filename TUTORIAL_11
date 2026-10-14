@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+
+// Function Template
+// This function can add two values of the same data type.
+template <class T>
+T add(T a, T b)
+{
+    return a + b;
+}
+
+// Class Template
+// This class stores two values of the same data type.
+template <class T>
+class Addition
+{
+private:
+    T num1, num2;
+
+public:
+    // Constructor to initialize the values
+    Addition(T a, T b)
+    {
+        num1 = a;
+        num2 = b;
+    }
+
+    // Member function to add the two values
+    T sum()
+    {
+        return num1 + num2;
+    }
+};
+
+int main()
+{
+    // Using the Function Template with integers
+    cout << "Function Template (int): "
+         << add(10, 20) << endl;
+
+    // Using the Function Template with decimal values
+    cout << "Function Template (double): "
+         << add(2.5, 3.5) << endl;
+
+    // Using the Class Template with integers
+    Addition<int> obj1(15, 25);
+    cout << "Class Template (int): "
+         << obj1.sum() << endl;
+
+    // Using the Class Template with decimal values
+    Addition<double> obj2(4.5, 5.5);
+    cout << "Class Template (double): "
+         << obj2.sum() << endl;
+
+    return 0;
+}
